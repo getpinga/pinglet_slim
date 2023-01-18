@@ -1,0 +1,43 @@
+{
+    "name": "getpinga/pinglet",
+    "description": "Pinglet Framework integrates Slim with Swoole or Swow",
+    "keywords": [
+        "microframework", "swoole", "swow", "async", "project template"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Taras Kondratyuk",
+            "email": "tk@gepinga.com"
+        }
+    ],
+    "type": "project",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.1",
+        "ext-swoole": "^5.0",
+        "slim/slim": "4.11",
+        "skoro/slim-swoole-integration": "dev-update-deps",
+        "vlucas/phpdotenv": "^5.5",
+        "psr/container": "^2.0.2",
+        "php-di/php-di": "^7.0.1",
+        "monolog/monolog": "^3.2.0",
+        "laminas/laminas-diactoros": "^2.5",
+        "swow/swow": "^1.1"
+    },
+    "suggest": {
+        "ext-inotify": "Needed to enable hot code reloading in swoole",
+        "ext-swow": "You need either ext-swoole or ext-openswoole or ext-swow",
+        "ext-swoole": "You need either ext-swoole or ext-openswoole or ext-swow",
+        "ext-openswoole": "You need either ext-swoole or ext-openswoole or ext-swow"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        },
+        "files": [
+            "app/functions.php"
+        ]
+    }
+}
