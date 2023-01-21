@@ -31,7 +31,7 @@ $server = (require APP_DIR . 'swow.php')($app);
 })($app);
 
  (function ($app) {
-    (require APP_DIR . 'routes.php')($app);
+    (require dirname(__DIR__) . '/routes/index.php')($app);
 })($app); 
 
 ini_set('memory_limit', '1G');
