@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Swow\Coroutine;
@@ -31,8 +32,8 @@ $server = (require APP_DIR . 'swow.php')($app);
 })($app);
 
  (function ($app) {
-    (require dirname(__DIR__) . '/routes/index.php')($app);
-})($app); 
+     (require dirname(__DIR__) . '/routes/index.php')($app);
+ })($app);
 
 ini_set('memory_limit', '1G');
 logger($app)->info(sprintf('Server is started on %s:%d', env('SERVER_ADDR', 'localhost'), (int) env('SERVER_PORT', 9501)));
@@ -42,16 +43,16 @@ while (true) {
         $connection = null;
         $connection = $server->acceptConnection();
         Coroutine::run(static function () use ($connection, $app): void {
-             try {
+            try {
                 while (true) {
                     $request = null;
                     try {
                         $request = $connection->recvHttpRequest();
-						$response = $app->handle($request);
-						$body = (string)$response->getBody();
-						$connection->respond($body);
+                        $response = $app->handle($request);
+                        $body = (string)$response->getBody();
+                        $connection->respond($body);
                     } catch (HttpProtocolException $exception) {
-						logger($app)->error($exception->getMessage());
+                        logger($app)->error($exception->getMessage());
                         $connection->error($exception->getCode(), $exception->getMessage(), close: true);
                         break;
                     }
@@ -60,10 +61,10 @@ while (true) {
                     }
                 }
             } catch (Exception) {
-				//logger($app)->error($exception->getMessage());
+                //logger($app)->error($exception->getMessage());
             } finally {
                 $connection->close();
-            } 
+            }
         });
     } catch (SocketException|CoroutineException $exception) {
         if (in_array($exception->getCode(), [Errno::EMFILE, Errno::ENFILE, Errno::ENOMEM], true)) {
