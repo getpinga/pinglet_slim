@@ -27,7 +27,7 @@ return function (App $app): HttpServer {
 
     $server->set([
         'worker_num' => env('WORKER_NUM'),
-        'pid_file' => VAR_DIR . 'server.pid',
+        'pid_file' => VAR_DIR . 'swoole.pid',
     ]);
 
     return $server;
