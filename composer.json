@@ -1,5 +1,5 @@
 {
-    "name": "getpinga/pinglet",
+    "name": "pinga/pinglet",
     "description": "Pinglet Framework integrates Slim with Swoole or Swow",
     "keywords": [
         "microframework", "swoole", "swow", "async", "project template"
