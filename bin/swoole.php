@@ -20,14 +20,13 @@ $app = AppFactory::create();
 $server = (require APP_DIR . 'swoole.php')($app);
 
 $server->on('workerStart', function (HttpServer $server) use ($app) {
-
     (function ($app) {
         (require APP_DIR . 'middlewares.php')($app);
     })($app);
 
- (function ($app) {
-    (require dirname(__DIR__) . '/routes/index.php')($app);
-})($app); 
+    (function ($app) {
+        (require dirname(__DIR__) . '/routes/index.php')($app);
+    })($app);
 });
 
 $server->on('request', ServerRequestFactory::createRequestCallback($app));
