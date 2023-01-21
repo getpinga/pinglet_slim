@@ -12,7 +12,7 @@ Pinglet is developed in 2023 by Taras Kondratyuk and based on [slim-swoole-proje
 
 ## Installation
 
-Clone this repository, or use [composer](https://getcomposer.org/):
+Create a project by using [composer](https://getcomposer.org/):
 ```
 $ composer create-project pinga/pinglet --stability=dev --prefer-source myproject
 ```
