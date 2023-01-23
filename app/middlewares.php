@@ -9,9 +9,13 @@
 declare(strict_types=1);
 
 use Slim\App;
+use function Compwright\PhpSession\Frameworks\Slim\registerSessionMiddleware;
 
 return function (App $app): void {
 
+    // Middleware
+    registerSessionMiddleware($app);
+    $app->addRoutingMiddleware(); // must come before ErrorMiddleware
     $app->addErrorMiddleware(
         displayErrorDetails: is_debug_enabled(),
         logErrors: (bool) env('LOG_ERRORS', false),
@@ -19,9 +23,4 @@ return function (App $app): void {
         logger: logger($app),
     );
 
-    // Enable if you need to parse json requests
-    // or add your own.
-//     $src->addBodyParsingMiddleware();
-
-    // Put your global middlewares here...
 };
