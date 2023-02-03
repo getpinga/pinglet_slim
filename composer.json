@@ -1,9 +1,16 @@
 {
-    "name": "getpinga/pinglet",
-    "description": "Pinglet Framework integrates Slim with Swoole or Swow",
-    "keywords": [
-        "microframework", "swoole", "swow", "async", "project template"
-    ],
+    "name": "pinga/pinglet",
+    "autoload": {
+        "psr-4": {
+            "Pinglet\\": "src/"
+        },
+        "files": [
+            "src/Bootstrap/App.php",
+            "src/Bootstrap/SwooleServer.php",
+            "src/Bootstrap/SwowServer.php",
+            "src/Route.php"
+        ]
+    },
     "license": "MIT",
     "authors": [
         {
@@ -11,35 +18,18 @@
             "email": "tk@gepinga.com"
         }
     ],
-    "type": "project",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
-        "php": "^8.1",
-        "ext-swoole": "^5.0",
-        "slim/slim": "4.11",
-        "skoro/slim-swoole-integration": "dev-update-deps",
-        "vlucas/phpdotenv": "^5.5",
-        "psr/container": "^2.0.2",
-        "php-di/php-di": "^7.0.1",
-        "monolog/monolog": "^3.2.0",
-        "laminas/laminas-diactoros": "^2.5",
+        "slim/slim": "4.*",
+        "nyholm/psr7": "^1.5",
+        "nyholm/psr7-server": "^1.0",
+        "imefisto/psr-swoole-native": "^1.1",
+        "doctrine/orm": "^2.12",
+        "doctrine/dbal": "^3.3",
+        "doctrine/annotations": "^1.13",
+        "symfony/yaml": "^6.0",
+        "symfony/cache": "^6.0",
+        "php-di/php-di": "*",
         "swow/swow": "^1.1",
-        "compwright/php-session": "^3.1",
-        "kodus/file-cache": "^2.0"
-    },
-    "suggest": {
-        "ext-inotify": "Needed to enable hot code reloading in swoole",
-        "ext-swow": "You need either ext-swoole or ext-openswoole or ext-swow",
-        "ext-swoole": "You need either ext-swoole or ext-openswoole or ext-swow",
-        "ext-openswoole": "You need either ext-swoole or ext-openswoole or ext-swow"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        },
-        "files": [
-            "app/functions.php"
-        ]
+        "monolog/monolog": "^3.2"
     }
 }
